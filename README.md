@@ -1,5 +1,7 @@
 ## Firebase Feautures
 
--- Authentication
--- Database
--- Hosting
+#### -- Authentication
+
+#### -- Database
+
+#### -- Hosting
