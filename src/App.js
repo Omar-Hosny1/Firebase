@@ -1,12 +1,11 @@
-import { app } from "./Firebase/firebaseConfing";
+import { app, database } from "./Firebase/firebaseConfing";
 import "./App.css";
-import GoogleAuth from "./GoogleAuth/GoogleAuth";
-import UserAndPasswordAuth from "./user-and-password/UserAndPasswordAuth";
+import FirebaseDatabase from "./Firebase-Database/FirebaseDatabase";
 
 function App() {
   return (
     <>
-      <UserAndPasswordAuth />
+      <FirebaseDatabase />
     </>
   );
 }
