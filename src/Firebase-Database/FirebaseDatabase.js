@@ -5,6 +5,7 @@ import {
   getDocs,
   doc,
   updateDoc,
+  deleteDoc,
 } from "firebase/firestore";
 import { database } from "../Firebase/firebaseConfing";
 function FirebaseDatabase() {
@@ -26,7 +27,7 @@ function FirebaseDatabase() {
       });
   };
 
-  const getData = () => {
+  const getDataHandler = () => {
     getDocs(collectionRef)
       .then((response) => {
         console.log(
@@ -40,8 +41,8 @@ function FirebaseDatabase() {
       });
   };
 
-  const updataData = () => {
-    const updatedDoc = doc(database, "users", "QjQmo2larR458ihiZvBf");
+  const updataDataHandler = () => {
+    const updatedDoc = doc(database, "users", "Vay6JCe4HIHclfKnlUn9");
     updateDoc(updatedDoc, {
       email: emailRef.current.value,
       password: "Omar",
@@ -53,13 +54,25 @@ function FirebaseDatabase() {
         console.log(err.message);
       });
   };
+
+  const deleteDataHandler = () => {
+    const deletedDoc = doc(database, "users", "Vay6JCe4HIHclfKnlUn9");
+    deleteDoc(deletedDoc)
+      .then((response) => {
+        alert("Data Deleted");
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+  };
   return (
     <>
       <input type="text" placeholder="Enter Your Email" ref={emailRef} />;
       <input type="text" placeholder="Enter Your password" ref={passwordRef} />
-      <button onClick={sendDataHandler}>Submit</button>
-      <button onClick={getData}>Get Data</button>
-      <button onClick={updataData}>Updata Item</button>
+      <button onClick={sendDataHandler}>Send Data</button>
+      <button onClick={getDataHandler}>Get Data</button>
+      <button onClick={updataDataHandler}>Updata Item</button>
+      <button onClick={deleteDataHandler}>Delete Data</button>
     </>
   );
 }
