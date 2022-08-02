@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, getDocs } from "firebase/firestore";
 import { database } from "../Firebase/firebaseConfing";
 function FirebaseDatabase() {
   const collectionRef = collection(database, "users");
@@ -19,15 +19,26 @@ function FirebaseDatabase() {
         alert(err.message);
       });
   };
+
+  const getData = () => {
+    getDocs(collectionRef)
+      .then((response) => {
+        console.log(
+          response.docs.map((item) => {
+            return item.data();
+          })
+        );
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
   return (
     <>
-      <input type="email" placeholder="Enter Your Email" ref={emailRef} />;
-      <input
-        type="password"
-        placeholder="Enter Your password"
-        ref={passwordRef}
-      />
+      <input type="text" placeholder="Enter Your Email" ref={emailRef} />;
+      <input type="text" placeholder="Enter Your password" ref={passwordRef} />
       <button onClick={sendDataHandler}>Submit</button>
+      <button onClick={getData}>Get Data</button>
     </>
   );
 }
