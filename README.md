@@ -1,7 +1,7 @@
 ## Firebase Feautures
 
-#### -- Authentication
+#### -- Authentication 👦.
 
-#### -- Database
+#### -- Database 📅.
 
-#### -- Hosting
+#### -- Hosting 🌐.
