@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
+
 function UserAndPasswordAuth() {
   const [signIn, setSignIn] = useState(false);
   let auth = getAuth();
@@ -43,7 +44,6 @@ function UserAndPasswordAuth() {
     <>
       {!signIn && (
         <>
-          {" "}
           <input
             type="email"
             placeholder="enter your email"
@@ -57,8 +57,6 @@ function UserAndPasswordAuth() {
           <button onClick={submitHandler}>Submit</button>
         </>
       )}
-
-      <button onClick={() => setSignIn((prev) => !prev)}>Change</button>
 
       {signIn && (
         <>
@@ -75,6 +73,12 @@ function UserAndPasswordAuth() {
           <button onClick={submitHandlerSignIn}>Submit</button>
         </>
       )}
+      <button
+        style={{ display: "block" }}
+        onClick={() => setSignIn((prev) => !prev)}
+      >
+        Change Operation
+      </button>
     </>
   );
 }
